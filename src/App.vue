@@ -16,9 +16,9 @@ export default {
 </script>
 
 <style>
-.app
+body
 {
-  background:#a78e87;
+  background-color: #faf3e0;
 }
 /* Pour les navigateurs WebKit comme Chrome, Safari, et plus récemment, Microsoft Edge */
 ::-webkit-scrollbar {

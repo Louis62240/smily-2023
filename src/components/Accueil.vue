@@ -1,6 +1,6 @@
 <template>
   <section
-    class="welcome-section bg-secondary text-body p-4 shadow-2xl relative"
+    class="welcome-section text-body p-4 shadow-2xl relative"
   >
     <!-- SVG de fond à droite -->
     <!-- SVG de fond à gauche -->
@@ -29,13 +29,9 @@
       <p class="text-lg mb-4">
         La meilleure plateforme pour votre bonheur quotidien.
       </p>
-      <button
-        class="text-white bg-highlight hover:bg-tertiary transition-colors duration-300 rounded-full px-6 py-2 animate__animated animate__pulse animate__infinite animate__slow"
-      >
-        En savoir plus
-      </button>
     </div>
   </section>
+  
 </template>
 
 <script>
@@ -56,7 +52,7 @@ export default {
   color: #333;
 }
 .text-highlight {
-  color: #ff5733;
+  color: #55423d;
 }
 .container {
   height: 100%;
