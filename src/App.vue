@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import Accueil from './components/Accueil.vue'
-import Header from './components/Header.vue'
-import Login from './components/Login.vue'
+import Accueil from './components/Home/Accueil.vue'
+import Header from './components/Header/Header.vue'
+import Login from './components/Authentification/Login.vue'
 export default {
   name: 'App',
   data() {

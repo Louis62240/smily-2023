@@ -1,0 +1,21 @@
+/* Style pour le logo et le texte dans le header */
+
+.smily-logo {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .smily-logo:hover {
+    transform: rotate(360deg);
+  }
+  
+  .smily-text {
+    font-size: 1.5rem;
+    font-family: "Comic Sans MS", "Chalkboard SE", "Comic Neue", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px #000000;
+    transition: color 0.3s ease-in-out;
+  }
+  
