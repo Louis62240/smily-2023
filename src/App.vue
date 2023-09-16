@@ -1,33 +1,20 @@
-<template class="app">
-  <Header />
-  <Accueil v-if="componentDisplayed==='accueil'" @showLoginComponent="showLoginComponent" />
-  <Login v-if="componentDisplayed==='login'"  />
+<template>
+  <div class="app">
+    <Header />
+    <router-view />
+  </div>
 </template>
 
 <script>
-import Accueil from './components/Home/Accueil.vue'
-import Header from './components/Header/Header.vue'
-import Login from './components/Authentification/Login.vue'
+import Header from './components/Header/Header.vue';
+
 export default {
   name: 'App',
-  data() {
-    return {
-      componentDisplayed: 'accueil',
-    };
-  },
   components: {
-    Accueil,
     Header,
-    Login,
-  },
-  methods: {
-    showLoginComponent() {
-      this.componentDisplayed = 'login';
-    },
   },
 }
 </script>
-
 <style>
 body
 {

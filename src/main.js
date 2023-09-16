@@ -1,10 +1,25 @@
 import { createApp } from 'vue';
 import { createI18n } from 'vue-i18n';
+import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
 import './assets/css/tailwind.css';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import 'font-awesome/css/font-awesome.css'
 
+
+import HomeComponent from './components/Home/Accueil.vue';
+import LoginComponent from './components/Authentification/Login.vue';
+
+const routes = [
+  { path: '/', component: HomeComponent },
+  { path: '/login', component: LoginComponent },
+];
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
 const messages = {
     en: {
       welcome: 'Welcome to Smily',
@@ -63,4 +78,5 @@ const i18n = createI18n({
 const app = createApp(App);
 app.use(i18n);
 app.use(VueSweetalert2);
+app.use(router);
 app.mount('#app');

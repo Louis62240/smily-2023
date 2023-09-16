@@ -1,43 +1,10 @@
 <template>
-  <ul class="flex space-x-6">
-    <li class="group relative" v-for="(item, index) in menuItems" :key="index">
-      <a
-        @click="setActive(index)"
-        :class="[
-          'flex items-center transition duration-300 py-2 px-4 rounded-full bg-white bg-opacity-20 hover:bg-opacity-40 transform hover:scale-110 cursor-pointer',
-          { 'active-link': activeIndex === index },
-        ]"
-      >
-        <i :class="`fas ${item.icon} mr-2`"></i> {{ $t(item.nameKey) }}
-
-        <span
-          class="absolute inset-0 bg-highlight opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-full"
-        ></span>
-      </a>
-      <div
-        class="absolute left-0 w-full h-0.5 bg-highlight rounded-full group-hover:h-1 transition-all duration-300"
-      ></div>
-    </li>
-    <li class="relative group">
-      <a
-        @click="showLoginComponent"
-        class="flex items-center transition duration-300 py-2 px-4 rounded-full bg-white bg-opacity-20 hover:bg-opacity-40 transform hover:scale-110 cursor-pointer"
-      >
-        <i class="fas fa-user mr-2"></i> Mon Compte
-      </a>
-    </li>
-
-    <li>
-      <input
-        class="input"
-        name="text"
-        :placeholder="$t('search')"
-        type="text"
-      />
-    </li>
-    <li>
-      <select
-        class="w-36 h-10 rounded border-2 border-primary bg-secondary font-semibold p-2 cursor-pointer outline-none focus:border-highlight language-selector"
+  <ul class="flex flex-wrap md:space-x-6">
+    <router-link :to="item.route" class="group relative listMenu" v-for="(item, index) in menuItems" :key="index">
+      <button @click="setActive(index)"  :class="{ 'active-link': activeIndex === index }" class="custom-btn btn-14"><i :class="`fas ${item.icon} mr-2`"></i><span class="hidden md:inline">{{ $t(item.nameKey) }}</span></button>
+    </router-link>
+    <li class="group relative listMenu">
+      <select class="language-selector w-full md:w-auto"
         @change="changeLanguage"
         style="background-color: #ffc0ad"
       >
@@ -90,13 +57,12 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
 
 .active-link {
-  background-color: #ffc0ad; /* Orange, par exemple */
-  color: #271c19; /* Texte blanc */
-  border-radius: 12px; /* Coins arrondis */
+  background-color: #ffc0ad !important;
+  color: #271c19 !important;
 }
 
 .input {
@@ -140,6 +106,110 @@ export default {
 .language-selector option {
   background-color: #ffc0ad;
   color: #271c19;
+}.language-selector {
+  width: 9rem; // Correspond à w-36 en Tailwind
+  height: 2.5rem; // Correspond à h-10 en Tailwind
+  border-radius: .375rem; // Correspond à rounded en Tailwind
+  border: 2px solid; // Correspond à border-2 en Tailwind
+  font-weight: 600; // Correspond à font-semibold en Tailwind
+  padding: .5rem; // Correspond à p-2 en Tailwind
+  cursor: pointer; // Correspond à cursor-pointer en Tailwind
+  outline: none; // Correspond à outline-none en Tailwind
+  
+  // Couleurs personnalisées (à remplacer par vos propres valeurs)
+  border-color: #55423d; // Correspond à border-primary
+  background-color: #ffc0ad; // Correspond à bg-secondary
+  outline: 0;
+  &:focus {
+    border-color: #ffc0ad; // Correspond à focus:border-highlight
+  }
+  
+  // Design réactif
+  @media screen and (min-width: 768px) { // Correspond à @screen md en Tailwind
+    width: auto;
+  }
+  
+  @media screen and (max-width: 767.98px) { // Correspond à @screen sm en Tailwind
+    width: 100%;
+  }
+}
+.bg-option {
+  background-color: #ffc0ad;
+}
+/* Ajoutez ces classes pour rendre le composant responsive */
+@media screen and (max-width: 768px) {
+  .active-link {
+    border-radius: 6px;
+  }
+  .input {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .language-selector {
+    width: 100%;
+    margin-top: 10px;
+  }
 }
 
+/* 14 */
+.btn-14 {
+  background: rgb(255,151,0);
+  border: none;
+  z-index: 1;
+}
+.btn-14:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 0;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: 5px;
+  background-color: #ffc0ad;
+  background-image: linear-gradient(315deg, #ffc0ad 0%, #ffc0ad 74%);
+  box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5),
+              7px 7px 20px 0px rgba(0,0,0,.1),
+              4px 4px 5px 0px rgba(0,0,0,.1);
+  transition: all 0.3s ease;
+}
+.btn-14:hover {
+  color: #000;
+}
+.btn-14:hover:after {
+  top: auto;
+  bottom: 0;
+  height: 100%;
+}
+.btn-14:active {
+  top: 2px;
+}
+.frame {
+  width: 90%;
+  margin: 40px auto;
+  text-align: center;
+}
+button {
+  margin: 10px;
+}
+select {
+  margin: 10px;
+}
+.custom-btn {
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: #87736d;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
 </style>

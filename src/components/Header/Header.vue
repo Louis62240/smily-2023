@@ -1,12 +1,14 @@
 <template>
   <header class="bg-primary text-headline p-4 shadow-2xl header-animated">
     <div
-      class="container mx-auto flex justify-between items-center animate__animated animate__fadeIn"
+      class="container mx-auto flex flex-col md:flex-row justify-between items-center animate__animated animate__fadeIn"
     >
-      <div class="flex items-center group cursor-pointer smily-container">
+      <div
+        class="flex items-center group cursor-pointer smily-container w-full md:w-auto mb-4 md:mb-0"
+      >
         <logo-and-title-component />
       </div>
-      <nav>
+      <nav class="w-full md:w-auto">
         <list-link :menuItems="menuItems" />
       </nav>
     </div>
@@ -23,8 +25,9 @@ export default {
     return {
       showMenu: false,
       menuItems: [
-        { nameKey: "home", icon: "fa-home" },
-        { nameKey: "contact", icon: "fa-envelope" },
+        { nameKey: "home", icon: "fa-home", route: "/" },
+        { nameKey: "contact", icon: "fa-envelope", route: "/contact" },
+        { nameKey: "account", icon: "fa-user", route: "/login" },
       ],
       showLogin: false,
     };
@@ -41,9 +44,7 @@ export default {
 };
 </script>
 <style scoped>
-
 .header-animated {
   animation: slideFromTop 0.5s ease-out forwards;
 }
-
 </style>
