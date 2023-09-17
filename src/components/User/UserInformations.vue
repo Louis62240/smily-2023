@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="User" class="flex items-center justify-center h-80vh">
-        <MyUserInformations @logout="handleLogout" />
+        <MyUserInformations @logout="handleLogout" class="animate__animated animate__fadeIn"/>
     </div>
     <div v-else class="flex items-center justify-center h-80vh">
       <div
@@ -283,6 +283,5 @@ export default {
 {
   background:#55423d;
   color:white;
-
 }
 </style>

@@ -132,4 +132,9 @@ export default {
   background-color: #ffc0ad;
   color: #271c19 !important;
 }
+
+input
+{
+    color:black
+}
 </style>

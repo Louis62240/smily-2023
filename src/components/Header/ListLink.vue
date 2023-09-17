@@ -1,23 +1,21 @@
 <template>
   <ul class="flex flex-wrap md:space-x-6">
-    <router-link :to="item.route" class="group relative listMenu" v-for="(item, index) in menuItems" :key="index">
-      <button @click="setActive(index)"  :class="{ 'active-link': activeIndex === index }" class="custom-btn btn-14"><i :class="`fas ${item.icon} mr-2`"></i><span class="hidden md:inline">{{ $t(item.nameKey) }}</span></button>
+    <router-link :to="item.route" class="group relative listMenu" v-for="(item, index) in menuItems" :key="index" >
+      <button @click="setActive(index)"  :class="{ 'active-link': item.route === this.$route.path }" class="custom-btn btn-14"><i :class="`fas ${item.icon} mr-2`"></i><span class="hidden md:inline">{{ $t(item.nameKey) }}</span></button>
     </router-link>
     <li class="group relative listMenu">
       <select class="language-selector w-full md:w-auto"
         @change="changeLanguage"
         style="background-color: #ffc0ad"
       >
-        <option value="fr" selected style="background-color: #ffc0ad">
-          🇫🇷 Français
+      <option
+          v-for="(language, index) in supportedLanguages"
+          :key="index"
+          :value="language.code"
+          :style="{ backgroundColor: language.backgroundColor }"
+        >
+          {{ language.flag }} {{ language.name }}
         </option>
-        <option value="en" style="background-color: #ffc0ad">🇬🇧 English</option>
-        <option value="es" style="background-color: #ffc0ad">🇪🇸 Español</option>
-        <option value="de" style="background-color: #ffc0ad">🇩🇪 Deutsch</option>
-        <option value="it" style="background-color: #ffc0ad">
-          🇮🇹 Italiano
-        </option>
-        <!-- Ajoutez d'autres langues ici -->
       </select>
     </li>
   </ul>
@@ -34,6 +32,14 @@ export default {
   data() {
     return {
       activeIndex: 0,
+      supportedLanguages: [
+        { code: 'fr', name: 'Français', flag: '🇫🇷', backgroundColor: '#ffc0ad' },
+        { code: 'en', name: 'English', flag: '🇬🇧', backgroundColor: '#ffc0ad' },
+        { code: 'es', name: 'Español', flag: '🇪🇸', backgroundColor: '#ffc0ad' },
+        { code: 'de', name: 'Deutsch', flag: '🇩🇪', backgroundColor: '#ffc0ad' },
+        { code: 'it', name: 'Italiano', flag: '🇮🇹', backgroundColor: '#ffc0ad' },
+        // Ajoutez d'autres langues ici
+      ],
     };
   },
   methods: {

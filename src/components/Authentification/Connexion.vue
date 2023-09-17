@@ -81,4 +81,8 @@ export default {
     color: #271c19 !important;
     }  
 
+input
+{
+  color:black;
+}
 </style>
