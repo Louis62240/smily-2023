@@ -1,11 +1,13 @@
 <template>
   <section
-    class="welcome-section text-body p-4 shadow-2xl relative"
+    class="welcome-section text-body p-4 relative"
   >
+  <div class="hidden sm:block">
     <background-component />
-    <!-- Contenu du composant -->
+  </div>
     <div
-      class="container mx-auto flex flex-col justify-center items-center animate__animated animate__fadeIn h-full z-10"
+      class="container mx-auto flex flex-col justify-center items-center animate__animated animate__fadeIn h-full z-10
+      "
     >
       <content-home-component/>
       <button class="start-btn" @click="showAlert">
@@ -35,6 +37,14 @@ export default {
   height: calc(100vh - 64px);
   position: relative; /* Ajouté pour le positionnement absolu du SVG */
 }
+@media (max-width: 1000px) {
+  .welcome-section {
+    height: calc(80vh - 80px);
+  }
+}
+
+
+
 .bg-secondary {
   background-color: #faf3e0;
 }
@@ -46,6 +56,8 @@ export default {
   height: 100%;
   position: relative; /* Ajouté pour le positionnement z-index */
   z-index: 10; /* Ajouté pour que le contenu apparaisse au-dessus du SVG */
+  justify-content: center;
+    align-items: center;
 }
 
 .start-btn {
@@ -83,4 +95,7 @@ export default {
   animation: bounce 2s infinite;
 }
 
+.sm\:filter {
+  filter: blur(8px); /* Ajoutez le filtre de flou souhaité */
+}
 </style>

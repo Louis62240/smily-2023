@@ -6,14 +6,15 @@ import './assets/css/tailwind.css';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import 'font-awesome/css/font-awesome.css'
-
+import VueToast from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-sugar.css';
 
 import HomeComponent from './components/Home/Accueil.vue';
-import LoginComponent from './components/Authentification/Login.vue';
+import UserInformations from './components/User/UserInformations.vue';
 
 const routes = [
   { path: '/', component: HomeComponent },
-  { path: '/login', component: LoginComponent },
+  { path: '/login', component: UserInformations },
 ];
 
 const router = createRouter({
@@ -80,3 +81,5 @@ app.use(i18n);
 app.use(VueSweetalert2);
 app.use(router);
 app.mount('#app');
+app.use(VueToast);
+

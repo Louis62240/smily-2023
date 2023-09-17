@@ -26,7 +26,6 @@ export default {
       showMenu: false,
       menuItems: [
         { nameKey: "home", icon: "fa-home", route: "/" },
-        { nameKey: "contact", icon: "fa-envelope", route: "/contact" },
         { nameKey: "account", icon: "fa-user", route: "/login" },
       ],
       showLogin: false,
@@ -35,6 +34,12 @@ export default {
   components: {
     LogoAndTitleComponent,
     ListLink,
+  },
+  computed:
+  {
+    isAuthentificated() {
+      return this.$store.getters.isAuthentificated;
+    },
   },
   methods: {
     toggleMenu() {
