@@ -31,3 +31,17 @@ jobs:
           allow_empty_commit: true
           user_name: github-actions[bot]
           user_email: github-actions[bot]@users.noreply.github.com
+
+  release:
+    runs-on: ubuntu-latest
+    needs: build-and-deploy
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
